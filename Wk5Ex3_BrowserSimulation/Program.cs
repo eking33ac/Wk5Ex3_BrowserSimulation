@@ -124,12 +124,12 @@ namespace Wk5Ex3_BrowserSimulation
 
             // add/push the new page to the end of the browsing location stack
             browsingLocation.Push(newPage);
-
+            // add the new page to the end of the browsing history
+            UpdateBrowsingHistory(browsingHistory, newPage);
             // Tell user they have visited the page!
             Console.WriteLine("Page visited successfully!\n");
 
-            // add the new page to the end of the browsing history
-            UpdateBrowsingHistory(browsingHistory, newPage);
+            
         }
 
 
@@ -166,10 +166,6 @@ namespace Wk5Ex3_BrowserSimulation
         // Method to view browsing history
         static void ViewBrowsingHistory(List<string> browsingHistory)
         {
-            // Declarations
-            List<string> reverseHistory = new List<string> browsingHistory.Reverse; // reversed browser history
-
-
             // Display title of history page
             Console.WriteLine("Browsing History");
 
@@ -221,17 +217,13 @@ namespace Wk5Ex3_BrowserSimulation
                 // for every index in browser history, loop
                 foreach (string page in browsingHistory)
                 {
-                    Console.WriteLine("This was reached");
                     // check if browser history at this index has the same name as the new page
                     if (page == newPage)
                     {
                         // remove the new page from the list at it's current location
                         browsingHistory.Remove(newPage);
                         // add the new page back to the list at the very beginning
-                        browsingHistory.Add(newPage);
-
-
-                        Console.WriteLine("That ran");
+                        browsingHistory.Insert(0, newPage);
 
                         // exit the foreach loop
                         break;
@@ -241,11 +233,10 @@ namespace Wk5Ex3_BrowserSimulation
 
 
             // if the new page is not already in the browsing history list
-            
+            if (!(browsingHistory.Contains(newPage)))
             {
-                // add the new page to the browsing history list
-                browsingHistory.Add(newPage);
-                Console.WriteLine("This ran");
+                // add the new page to the browsing history list at the beginning
+                browsingHistory.Insert(0, newPage);
             }
         }
 
