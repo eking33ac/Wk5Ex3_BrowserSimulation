@@ -128,8 +128,6 @@ namespace Wk5Ex3_BrowserSimulation
             UpdateBrowsingHistory(browsingHistory, newPage);
             // Tell user they have visited the page!
             Console.WriteLine("Page visited successfully!\n");
-
-            
         }
 
 
@@ -197,7 +195,7 @@ namespace Wk5Ex3_BrowserSimulation
         }
 
 
-        // Method ot add a new web page to the browsing history
+        // Method to add a new web page to the browsing history
         static void UpdateBrowsingHistory(List<string> browsingHistory, string newPage)
         {
             // processing
@@ -239,7 +237,6 @@ namespace Wk5Ex3_BrowserSimulation
                 browsingHistory.Insert(0, newPage);
             }
         }
-
 
 
         static void Main(string[] args)
